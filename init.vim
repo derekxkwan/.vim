@@ -26,6 +26,28 @@ nnoremap <C-H> <C-W><C-H>
 inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
 
+let g:tidal_no_mappings = 1
+let g:scSplitDirection = "v"
+
+set mouse=a
+set ttyfast
+set lazyredraw
+set nocursorline
+set scrolljump=-100
+set scrolloff=999
+let maplocalleader=","
+:tnoremap <Esc> <C-\><C-n>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+inoremap <C-e> <Esc>A
+inoremap <C-a> <Esc>I
+
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>
+
 colo ron
 set splitbelow
 set splitright
