@@ -27,7 +27,6 @@ let g:scSplitDirection = "v"
 
 set mouse=a
 set ttyfast
-set lazyredraw
 set nocursorline
 set scrolljump=-100
 set scrolloff=999
@@ -71,6 +70,7 @@ set novisualbell
 set expandtab
 set shiftwidth=4
 set tabstop=4
+set laststatus=2
 
 "Terminal stuff
 autocmd TermOpen * startinsert
