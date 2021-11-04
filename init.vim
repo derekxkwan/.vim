@@ -88,20 +88,18 @@ let g:netrw_winsize = 25
 "  autocmd VimEnter * :Vexplore
 "augroup END
 
-"statusbar stuff
-highlight StatuslineBufnum ctermfg=Black ctermbg=DarkYellow
-highlight StatuslineFilename ctermfg=Black ctermbg=DarkMagenta
+"statusline stuff
+highlight StatuslineBufnum ctermfg=Black ctermbg=DarkMagenta
+highlight StatuslineFilename ctermfg=Black ctermbg=DarkYellow
 highlight StatuslineFileformat ctermfg=White ctermbg=DarkGray
-highlight StatuslineFiletype ctermfg=Yellow ctermbg=DarkGray
+highlight StatuslineFiletype ctermfg=DarkYellow ctermbg=DarkGray
 highlight StatuslineModified ctermfg=White ctermbg=DarkRed
-highlight StatuslineNumbers ctermfg=Black ctermbg=DarkYellow
-highlight StatuslinePercent ctermfg=DarkBlue ctermbg=DarkYellow
+highlight StatuslineNumbers ctermfg=Black ctermbg=DarkMagenta
+highlight StatuslinePercent ctermfg=White ctermbg=DarkGray
 
 set statusline=
 set statusline+=%#StatuslineBufnum#   " Set color for bufnum
-set statusline+=\[
-set statusline+=%n                      " bufnum
-set statusline+=\]
+set statusline+=\ %n\                       " bufnum
 set statusline+=%#StatuslineFileformat#   " Set color for file format
 set statusline+=\ %{&ff}                 "file format
 set statusline+=%#StatuslineFiletype#   " Set color for file info
@@ -118,8 +116,9 @@ set statusline+=%#StatuslineNumbers#   " Set color for line numbers
 set statusline+=\ %l,                    " Line number
 set statusline+=%-3c                    " Column number
 set statusline+=/\                        " Slash
-set statusline+=%L                     " Total number of lines
-set statusline+=\ \|\                  " A separator
-set statusline+=%P\                       " percent of file
+set statusline+=%L\                      " Total number of lines
+set statusline+=%#StatuslinePercent#   " Set color for percent
+set statusline+=\ %P\                       " percent of file
+
 
 "runtime custom/lspconf.vim
