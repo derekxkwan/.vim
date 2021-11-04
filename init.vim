@@ -88,7 +88,7 @@ let g:netrw_winsize = 25
 "  autocmd VimEnter * :Vexplore
 "augroup END
 
-"statusline stuff
+"statusbar stuff
 highlight StatuslineBufnum ctermfg=Black ctermbg=DarkMagenta
 highlight StatuslineFilename ctermfg=Black ctermbg=DarkYellow
 highlight StatuslineFileformat ctermfg=White ctermbg=DarkGray
