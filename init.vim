@@ -30,7 +30,9 @@ set ttyfast
 set nocursorline
 set scrolljump=-100
 set scrolloff=999
-let maplocalleader=","
+let mapleader=","
+set timeoutlen=500
+
 :tnoremap <Esc> <C-\><C-n>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -38,6 +40,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
+nnoremap <leader>lb :ls<CR>:b<space>
 
 map gn :bn<cr>
 map gp :bp<cr>
