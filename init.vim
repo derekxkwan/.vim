@@ -31,7 +31,7 @@ set nocursorline
 set scrolljump=-100
 set scrolloff=999
 let mapleader=","
-set timeoutlen=500
+set timeoutlen=1000
 
 :tnoremap <Esc> <C-\><C-n>
 nnoremap <C-J> <C-W><C-J>
