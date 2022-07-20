@@ -40,7 +40,8 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
-nnoremap <leader>lb :ls<CR>:b<space>
+nnoremap <leader>bl :ls<CR>:b<space>
+nnoremap <leader>br :ls t<CR>:b<space>
 
 map gn :bn<cr>
 map gp :bp<cr>
