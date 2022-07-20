@@ -29,7 +29,7 @@ set mouse=a
 set ttyfast
 set nocursorline
 set scrolljump=-100
-set scrolloff=999
+set scrolloff=0
 let mapleader=","
 set timeoutlen=1000
 
