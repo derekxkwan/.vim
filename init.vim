@@ -45,7 +45,7 @@ nnoremap <leader>br :ls t<CR>:b<space>
 
 map gn :bn<cr>
 map gp :bp<cr>
-map gd :bd<cr>
+map g# :b#<cr>
 
 colo ron
 set splitbelow
