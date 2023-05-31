@@ -27,6 +27,7 @@ let g:tidal_no_mappings = 1
 let g:scSplitDirection = "v"
 
 runtime! ftplugin/man.vim
+set shm=a
 set mouse=a
 set ttyfast
 set nocursorline
