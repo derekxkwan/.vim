@@ -1,7 +1,8 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin("~/.vim/plugged")
 Plug 'tidalcycles/vim-tidal'
 "Plug 'neomvim/nvim-lspconfig'
 Plug 'https://github.com/supercollider/scvim.git'
+Plug 'stevearc/vim-arduino'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'https://github.com/mipmip/vim-run-in-blender.git'
 Plug 'vimwiki/vimwiki'
@@ -25,6 +26,7 @@ let g:vimwiki_list = [{ 'path': '$HOME/vimwiki/',
 let g:tidal_no_mappings = 1
 let g:scSplitDirection = "v"
 
+runtime! ftplugin/man.vim
 set mouse=a
 set ttyfast
 set nocursorline
@@ -32,7 +34,6 @@ set scrolljump=-100
 set scrolloff=0
 let mapleader=","
 set timeoutlen=1000
-
 :tnoremap <Esc> <C-\><C-n>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -42,7 +43,6 @@ inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
 nnoremap <leader>bl :ls<CR>:b<space>
 nnoremap <leader>br :ls t<CR>:b<space>
-
 map gn :bn<cr>
 map gp :bp<cr>
 map g# :b#<cr>
@@ -57,6 +57,9 @@ filetype plugin indent on
 set nocompatible
 set autoread
 set wildmenu
+set wildmode=longest:full,full
+set showcmd
+set wrap
 set ignorecase
 set hlsearch
 set incsearch
@@ -87,19 +90,35 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+
 "augroup ProjectDrawer
 "  autocmd!
 "  autocmd VimEnter * :Vexplore
 "augroup END
 
-"statusbar stuff
+"misc stuff
+" https://vim.fandom.com/wiki/Capitalize_words_and_regions_easily
+" Capitalize every word on the line
+nmap gcc :s/\v<(.)(\w*)/\u\1\L\2/g<CR>
+nmap gcgc gcc
+
+" Capitalize every word in the visual selection.
+" Since the visual selection range ('<,'>) is linewise
+" need \%V to limit match to only characters in selection.
+vmap gc :s/\%V\v<(.)(\w*)/\u\1\L\2/g<CR> \| `<
+
+" Capitalize every word from current to last on line
+" (needs gc mapping from above)
+nmap gc$ viW$gc
+
+"statusline stuff
 highlight StatuslineBufnum ctermfg=Black ctermbg=DarkMagenta
-highlight StatuslineFilename ctermfg=Black ctermbg=DarkYellow
+highlight StatuslineFilename ctermfg=Black ctermbg=DarkCyan
 highlight StatuslineFileformat ctermfg=White ctermbg=DarkGray
 highlight StatuslineFiletype ctermfg=DarkYellow ctermbg=DarkGray
 highlight StatuslineModified ctermfg=White ctermbg=DarkRed
-highlight StatuslineNumbers ctermfg=Black ctermbg=DarkMagenta
-highlight StatuslinePercent ctermfg=White ctermbg=DarkGray
+highlight StatuslineNumbers ctermfg=White ctermbg=DarkGray
+highlight StatuslinePercent ctermfg=Black ctermbg=DarkMagenta
 
 set statusline=
 set statusline+=%#StatuslineBufnum#   " Set color for bufnum
@@ -124,5 +143,15 @@ set statusline+=%L\                      " Total number of lines
 set statusline+=%#StatuslinePercent#   " Set color for percent
 set statusline+=\ %P\                       " percent of file
 
+" from marsio at https://stackoverflow.com/questions/23012391/how-and-where-is-my-viminfo-option-set
+set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
+"           | |    |   |   |    | |  + viminfo file path
+"           | |    |   |   |    | + file marks 0-9,A-Z 0=NOT stored
+"           | |    |   |   |    + disable 'hlsearch' loading viminfo
+"           | |    |   |   + command-line history saved
+"           | |    |   + search history saved
+"           | |    + files marks saved
+"           | + lines saved each register (old name for <, vi6.2)
+"           + save/restore buffer list
 
 "runtime custom/lspconf.vim
