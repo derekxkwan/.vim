@@ -44,6 +44,11 @@ inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
 nnoremap <leader>bl :ls<CR>:b<space>
 nnoremap <leader>br :ls t<CR>:b<space>
+nnoremap <CR> ciw
+nnoremap <Tab> <C-W>w
+nnoremap <S-Tab> <C-W>W
+nnoremap Q @q
+vnoremap Q :norm @q<CR>
 map gn :bn<cr>
 map gp :bp<cr>
 map g# :b#<cr>
@@ -55,6 +60,7 @@ set splitright
 syntax on
 filetype plugin indent on
 
+set confirm
 set nocompatible
 set autoread
 set wildmenu
