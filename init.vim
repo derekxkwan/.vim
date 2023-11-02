@@ -101,6 +101,7 @@ autocmd TermOpen * startinsert
 autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
 autocmd TermOpen * setlocal nonumber norelativenumber
 
+autocmd Filetype html setlocal noautoindent nocindent nosmartindent indentexpr=
 "netrw stuff
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
