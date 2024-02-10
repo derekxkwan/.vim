@@ -48,12 +48,12 @@ nnoremap <Tab> <C-W>w
 nnoremap <S-Tab> <C-W>W
 nnoremap Q @q
 vnoremap Q :norm @q<CR>
-"disable middle click paste
+
+" disable middle click paste
 nnoremap <MiddleMouse> <Nop>
 nnoremap <2-MiddleMouse> <Nop>
 nnoremap <3-MiddleMouse> <Nop>
 nnoremap <4-MiddleMouse> <Nop>
-
 inoremap <MiddleMouse> <Nop>
 inoremap <2-MiddleMouse> <Nop>
 inoremap <3-MiddleMouse> <Nop>
@@ -125,10 +125,11 @@ nmap gcgc gcc
 " need \%V to limit match to only characters in selection.
 vmap gc :s/\%V\v<(.)(\w*)/\u\1\L\2/g<CR> \| `<
 
-" Capitalize every word from current to last on line
+" Capitalize every word from current to last on line 
 " (needs gc mapping from above)
 nmap gc$ viW$gc
 
+nmap <leader>h :noh<CR>
 "statusline stuff
 highlight StatuslineBufnum ctermfg=Black ctermbg=DarkMagenta
 highlight StatuslineFilename ctermfg=Black ctermbg=DarkCyan
@@ -160,6 +161,7 @@ set statusline+=/\                        " Slash
 set statusline+=%L\                      " Total number of lines
 set statusline+=%#StatuslinePercent#   " Set color for percent
 set statusline+=\ %P\                       " percent of file
+
 
 " from marsio at https://stackoverflow.com/questions/23012391/how-and-where-is-my-viminfo-option-set
 set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
