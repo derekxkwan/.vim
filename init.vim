@@ -8,6 +8,7 @@ Plug 'https://github.com/mipmip/vim-run-in-blender.git'
 Plug 'vimwiki/vimwiki'
 Plug 'https://github.com/itchyny/vim-haskell-indent.git'
 Plug 'https://github.com/eagletmt/neco-ghc.git'
+Plug 'neovim/nvim-lspconfig'
 "Plug 'deoplete-plugins/deoplete-jedi'
 "Plug 'deoplete-plugins/deoplete-tag'
 "Plug 'jpalardy/vim-slime'
@@ -63,7 +64,7 @@ map gn :bn<cr>
 map gp :bp<cr>
 map g# :b#<cr>
 
-colo ron
+colo torte
 set splitbelow
 set splitright
 
@@ -174,4 +175,50 @@ set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
 "           | + lines saved each register (old name for <, vi6.2)
 "           + save/restore buffer list
 
-"runtime custom/lspconf.vim
+
+" ----- python lsp stuff -----
+"
+set completeopt-=preview
+" from https://jdhao.github.io/post/neovim_builtin_lsp_hands_on/
+" nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+" nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+" nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+
+
+autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+" use omni completion provided by lsp
+
+
+lua << EOF
+lspconfig = require("lspconfig")
+lspconfig.pylsp.setup{
+    on_attach=custom_attach,
+    -- filetypes = {'python'},
+    settings = {
+        pylsp = {
+            plugins = {
+                black = {enabled = false},
+                autopep8 = {enabled = false},
+                yapf = {enabled=false},
+                pylint = {enabled = false},
+                pyflakes={enabled=false},
+                pycodestyle={enabled=false},
+                mccabe={enabled=false},
+                flake8={enabled=false}
+                -- pylint = {args = {'--ignore=E500,E231', '-'}, enabled=true, debounce=200},
+                }
+            }
+        }
+
+}
+
+EOF
+
+
+
