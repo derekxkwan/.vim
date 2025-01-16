@@ -49,6 +49,7 @@ nnoremap <Tab> <C-W>w
 nnoremap <S-Tab> <C-W>W
 nnoremap Q @q
 vnoremap Q :norm @q<CR>
+nnoremap <leader>^ -j
 
 " disable middle click paste
 nnoremap <MiddleMouse> <Nop>
