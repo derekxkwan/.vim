@@ -118,18 +118,27 @@ let g:netrw_winsize = 25
 
 "misc stuff
 " https://vim.fandom.com/wiki/Capitalize_words_and_regions_easily
-" Capitalize every word on the line
-nmap gcc :s/\v<(.)(\w*)/\u\1\L\2/g<CR>
-nmap gcgc gcc
-
-" Capitalize every word in the visual selection.
-" Since the visual selection range ('<,'>) is linewise
-" need \%V to limit match to only characters in selection.
-vmap gc :s/\%V\v<(.)(\w*)/\u\1\L\2/g<CR> \| `<
-
-" Capitalize every word from current to last on line 
-" (needs gc mapping from above)
-nmap gc$ viW$gc
+if (&tildeop)
+  nmap gcw guw~l
+  nmap gcW guW~l
+  nmap gciw guiw~l
+  nmap gciW guiW~l
+  nmap gcis guis~l
+  nmap gc$ gu$~l
+  nmap gcgc guu~l
+  nmap gcc guu~l
+  vmap gc gu~l
+else
+  nmap gcw guw~h
+  nmap gcW guW~h
+  nmap gciw guiw~h
+  nmap gciW guiW~h
+  nmap gcis guis~h
+  nmap gc$ gu$~h
+  nmap gcgc guu~h
+  nmap gcc guu~h
+  vmap gc gu~h
+endif
 
 nmap <leader>h :noh<CR>
 "statusline stuff
