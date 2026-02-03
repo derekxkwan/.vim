@@ -43,8 +43,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
-nnoremap <leader>bl :ls<CR>:b<space>
-nnoremap <leader>br :ls t<CR>:b<space>
 nnoremap <Tab> <C-W>w
 nnoremap <S-Tab> <C-W>W
 nnoremap Q @q
@@ -61,9 +59,15 @@ inoremap <2-MiddleMouse> <Nop>
 inoremap <3-MiddleMouse> <Nop>
 inoremap <4-MiddleMouse> <Nop>
 
+" buffer navigation
+nnoremap <leader>bl :ls<CR>:b<space>
+nnoremap <leader>br :ls t<CR>:b<space>
 map gn :bn<cr>
 map gp :bp<cr>
 map g# :b#<cr>
+
+" yank filepath in netrw to buffer
+nnoremap <leader>yf :let @" = expand('<cfile>:p')<CR>
 
 colo torte
 set splitbelow
