@@ -66,9 +66,6 @@ map gn :bn<cr>
 map gp :bp<cr>
 map g# :b#<cr>
 
-" yank filepath in netrw to buffer
-nnoremap <leader>yf :let @" = expand('<cfile>:p')<CR>
-
 colo torte
 set splitbelow
 set splitright
@@ -114,6 +111,8 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+" yank full filepath to buffer
+autocmd FileType netrw nnoremap <buffer> <leader>yf :let @" = b:netrw_curdir . '/' . expand("<cfile>")<CR>
 
 "augroup ProjectDrawer
 "  autocmd!
